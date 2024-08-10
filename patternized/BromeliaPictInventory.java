@@ -1,32 +1,18 @@
+import java.util.List;
+
 public class BromeliaPictInventory {
 
-    private PhotoAPIAdapter unsplashAPI;
-    private PhotoAPIAdapter pixabayAPI;
-    private PhotoRankingStrategy rankingStrategy;
+    private ranking rankingAlgorithm;
 
-    public BromeliaPictInventory(PhotoAPIAdapter unsplashAPI, PhotoAPIAdapter pixabayAPI, PhotoRankingStrategy rankingStrategy) {
-        this.unsplashAPI = unsplashAPI;
-        this.pixabayAPI = pixabayAPI;
-        this.rankingStrategy = rankingStrategy; //Patrón Brigde
-    }
-    
-    public List<Photos> rankPhotosResult(List<Photo> listaFotosUnplash, List<Photo> listaFotosPixaBay) {
+    public BromeliaPictInventory(ranking rankingA) {
 
-        //rankea las fotos de ambas apis y devuelve una lista de fotos rankeadas segun el algoritmo
-        return rankingStrategy.rankPhotos(listaFotosUnplash, listaFotosPixaBay);
-
+        //Se asigna el algoritmo de ranking
+        this.rankingAlgorithm = rankingA;
     }
 
-    public List<Photos> getPhotos(String query) {
-
+    public List<Photo> generateIcons(String query) {
         
-        List<Photo> unsplashPhotos = unsplashAPI.searchPhotos(query);
-        List<Photo> pixabayPhotos = pixabayAPI.searchPhotos(query);
-
-
-        return rankPhotosResult(unsplashPhotos, pixabayPhotos);
+        //Se retorna el ranking de las fotos ya hecho por el adapter
+        return rankingAlgorithm.rankPhotos(query);
     }
-
-    
-
 }

@@ -1,10 +1,17 @@
-public class LikesRanking implements PhotoRankingStrategy {
-    
+import java.util.List;
+
+public class likesRanking extends ranking {
+
+    public likesRanking(iApiAdapter apiAdapter) {
+        super(apiAdapter);
+    }
+
+
     @Override
-    public List<Photo> rankPhotos(List<Photo> photosPixabay, List<Photo> photosUnsplash) {
+    public List<Photo> rankPhotos(String query) {
+        List<Photo> photos = apiAdapter.searchPhotosAPIs(query);
+        //Se hace la lógica para el ranking por likes
         
-        //Se hace el algoritmo para ordenar las fotos por likes
-        Collections.sort(photosPixabay, photosUnsplash);
-        return photos.subList(0, 10);
+        return photos;
     }
 }

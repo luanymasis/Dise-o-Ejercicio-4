@@ -5,8 +5,9 @@ public class UnsplashedApi implements iApi {
 
     @Override
     public List<Photo> searchPhotos(String query) {
-        List<Photo> photos = null; //Se inicializa la lista de fotos
-        //Se debe agregar la logica para hacer la consulta a la API de Pixabay
+        //Se inicializa la lista de fotos
+        List<Photo> photos = null; 
+        //Se debe agregar la logica para hacer la consulta a la API de Unsplashed
         // y retornar una lista de fotos
         return photos;
     }

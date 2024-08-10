@@ -1,4 +1,4 @@
-package patternized;
+
 
 public class Photo {
     private String id;
